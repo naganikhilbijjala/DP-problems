@@ -1,0 +1,36 @@
+
+public class quick {
+	public static void main(String args[]) {
+		int A[] = {7,2,1,6,8,5,3,4};
+		qs(A,0,A.length-1);
+		for(int i=0;i<A.length;i++)
+			System.out.print(A[i]+" ");
+	}
+	public static void qs(int A[],int start,int end) {
+		int pIndex;
+		if(start<end) {
+			pIndex=partition(A,start,end);
+	        qs(A,start,pIndex-1);
+	        qs(A,pIndex+1,end);
+		}
+	}
+	public static int partition(int A[],int start,int end) {
+		int pivot,pIndex;
+		pIndex = start;
+		pivot=A[end];
+		for(int i=start; i<end; i++) {
+			if(A[i]<=pivot) {
+			int temp=A[i];
+			A[i]=A[pIndex];
+			A[pIndex]=temp;
+			pIndex++;
+			}
+		}
+		int temp;
+		temp = A[pIndex];
+		A[pIndex]=A[end];
+		A[end]=temp;
+		return pIndex;
+	}
+
+}
